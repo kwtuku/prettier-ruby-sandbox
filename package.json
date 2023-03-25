@@ -16,6 +16,8 @@
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
     "fix:prettier": "yarn lint:prettier --write",
-    "lint:prettier": "prettier --check ."
+    "fix:rubocop": "yarn lint:rubocop --autocorrect",
+    "lint:prettier": "prettier --check .",
+    "lint:rubocop": "bundle exec rubocop"
   }
 }
