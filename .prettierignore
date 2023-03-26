@@ -1,3 +1,19 @@
 app/assets/builds
 app/javascript/controllers/application.js
 app/javascript/controllers/index.js
+
+# rubocop.yml の AllCops.Exclude
+Rakefile
+config.ru
+config/application.rb
+config/boot.rb
+config/environment.rb
+config/environments/development.rb
+config/environments/production.rb
+config/environments/test.rb
+config/initializers/assets.rb
+config/initializers/content_security_policy.rb
+config/initializers/filter_parameter_logging.rb
+config/initializers/inflections.rb
+config/initializers/permissions_policy.rb
+config/puma.rb

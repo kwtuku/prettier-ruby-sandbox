@@ -60,9 +60,13 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
+  gem "prettier_print", require: false
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
+  gem "syntax_tree", require: false
+  gem "syntax_tree-haml", require: false
+  gem "syntax_tree-rbs", require: false
 end
 
 group :test do

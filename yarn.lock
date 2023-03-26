@@ -151,6 +151,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@prettier/plugin-ruby@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@prettier/plugin-ruby/-/plugin-ruby-3.2.2.tgz#43c9d85349032f74d34c4f57e6a77487d5c5bdc1"
+  integrity sha512-Vc7jVE39Fgswl517ET4kPtpnoRWE6XTi1Sivd84rZyomYnHYUmvUsEeoOf6tVhzTuIXE5XVQB1YCG2hulrwR3Q==
+  dependencies:
+    prettier ">=2.3.0"
+
 "@rails/actioncable@^7.0":
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.4.tgz#70a3ca56809f7aaabb80af2f9c01ae51e1a8ed41"
@@ -532,7 +539,7 @@ postcss@^8.0.9, postcss@^8.4.21:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-prettier@^2.8.7:
+prettier@>=2.3.0, prettier@^2.8.7:
   version "2.8.7"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.7.tgz#bb79fc8729308549d28fe3a98fce73d2c0656450"
   integrity sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==
