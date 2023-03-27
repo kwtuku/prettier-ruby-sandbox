@@ -18,6 +18,7 @@
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
     "fix:prettier": "yarn lint:prettier --write",
     "fix:rubocop": "yarn lint:rubocop --autocorrect",
+    "lint:haml-lint": "bundle exec haml-lint",
     "lint:prettier": "prettier --check .",
     "lint:rubocop": "bundle exec rubocop"
   }
