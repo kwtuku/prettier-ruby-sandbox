@@ -2,6 +2,8 @@ app/assets/builds
 app/javascript/controllers/application.js
 app/javascript/controllers/index.js
 
+db/schema.rb
+
 # rubocop.yml の AllCops.Exclude
 Rakefile
 config.ru
