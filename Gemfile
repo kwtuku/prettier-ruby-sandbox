@@ -64,6 +64,7 @@ group :development do
 
   gem "haml_lint", require: false
   gem "html2haml", require: false
+  gem "letter_opener_web"
   gem "prettier_print", require: false
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
