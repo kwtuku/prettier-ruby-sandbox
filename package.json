@@ -11,7 +11,8 @@
   },
   "devDependencies": {
     "@prettier/plugin-ruby": "^3.2.2",
-    "prettier": "^2.8.7"
+    "prettier": "^2.8.7",
+    "prettier-plugin-tailwindcss": "^0.2.6"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
