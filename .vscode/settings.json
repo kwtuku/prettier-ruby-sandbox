@@ -1,0 +1,11 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "Gemfile": "ruby"
+  },
+  "hamlLint.useBundler": true,
+  "[ruby]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

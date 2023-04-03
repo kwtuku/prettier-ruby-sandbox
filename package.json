@@ -9,8 +9,18 @@
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7"
   },
+  "devDependencies": {
+    "@prettier/plugin-ruby": "^3.2.2",
+    "prettier": "^2.8.7",
+    "prettier-plugin-tailwindcss": "^0.2.6"
+  },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "fix:prettier": "yarn lint:prettier --write",
+    "fix:rubocop": "yarn lint:rubocop --autocorrect",
+    "lint:haml-lint": "bundle exec haml-lint",
+    "lint:prettier": "prettier --check .",
+    "lint:rubocop": "bundle exec rubocop"
   }
 }
