@@ -1,8 +1,8 @@
 app/assets/builds
 app/javascript/controllers/application.js
 app/javascript/controllers/index.js
-
 db/schema.rb
+tmp
 
 # rubocop.yml の AllCops.Exclude
 Rakefile
