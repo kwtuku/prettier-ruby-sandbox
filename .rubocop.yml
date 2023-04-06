@@ -27,6 +27,14 @@ AllCops:
     - config/initializers/permissions_policy.rb
     - config/puma.rb
 
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/20230406141125_devise_create_users.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/20230406141125_devise_create_users.rb
+
 Style/Documentation:
   Enabled: false
 
