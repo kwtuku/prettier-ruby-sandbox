@@ -1,2 +1,9 @@
 class ApplicationController < ActionController::Base
+  alias user_root_path users_root_path
+
+  private
+
+  def after_sign_out_path_for(resource_or_scope)
+    session_path(resource_or_scope)
+  end
 end
