@@ -63,7 +63,6 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-  gem "devise-i18n"
   gem "haml_lint", require: false
   gem "html2haml", require: false
   gem "letter_opener_web"
