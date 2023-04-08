@@ -34,6 +34,7 @@ Metrics/AbcSize:
 Metrics/MethodLength:
   Exclude:
     - db/migrate/20230406141125_devise_create_users.rb
+    - db/migrate/20230408121228_devise_invitable_add_to_users.rb
 
 Style/Documentation:
   Enabled: false

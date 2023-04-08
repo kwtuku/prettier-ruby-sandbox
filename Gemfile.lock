@@ -95,6 +95,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise_invitable (2.0.7)
+      actionmailer (>= 5.0)
+      devise (>= 4.6)
     erubi (1.12.0)
     erubis (2.7.0)
     globalid (1.1.0)
@@ -292,6 +295,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise
+  devise_invitable
   haml-rails
   haml_lint
   html2haml
