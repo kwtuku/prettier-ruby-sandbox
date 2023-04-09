@@ -6,4 +6,5 @@ class Admin < ApplicationRecord
          :rememberable,
          :trackable,
          :validatable
+  include DeviseInvitable::Inviter
 end

@@ -10,6 +10,8 @@
       %th{scope: "col"}
         = User.human_attribute_name(:created_at)
       %th{scope: "col"}
+        = User.human_attribute_name(:invited_by_type)
+      %th{scope: "col"}
         = User.human_attribute_name(:invited_by_id)
       %th{scope: "col"}
         = User.human_attribute_name(:invitation_sent_at)
@@ -25,6 +27,8 @@
           = user.email
         %td
           = l user.created_at, format: :short
+        %td
+          = user.invited_by_type
         %td
           = user.invited_by_id&.truncate(8, omission: '')
         %td

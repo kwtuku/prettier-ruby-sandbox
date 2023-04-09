@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   devise_for :admins
   namespace :admins do
     root "home#index"
+    devise_for :users,
+               only: %i[invitations],
+               controllers: {
+                 invitations: "admins/users/invitations",
+               }
     resources :users, only: %i[index]
   end
 
