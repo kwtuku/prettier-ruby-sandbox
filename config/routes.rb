@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "home#index"
 
-  devise_for :users
+  devise_for :users, controllers: { invitations: "users/invitations" }
   namespace :users do
     root "home#index"
     resources :users, only: %i[index]
