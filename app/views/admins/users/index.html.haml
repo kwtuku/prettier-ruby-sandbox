@@ -1,0 +1,40 @@
+= link_to 'ユーザーを招待', new_admins_user_invitation_path
+
+%table
+  %thead
+    %tr
+      %th{scope: "col"}
+        = User.human_attribute_name(:id)
+      %th{scope: "col"}
+        = User.human_attribute_name(:email)
+      %th{scope: "col"}
+        = User.human_attribute_name(:created_at)
+      %th{scope: "col"}
+        = User.human_attribute_name(:invited_by_type)
+      %th{scope: "col"}
+        = User.human_attribute_name(:invited_by_id)
+      %th{scope: "col"}
+        = User.human_attribute_name(:invitation_sent_at)
+      %th{scope: "col"}
+        = User.human_attribute_name(:invitation_accepted_at)
+      %th{scope: "col"}
+  %tbody
+    - @users.each do |user|
+      %tr
+        %th{scope: "row"}
+          = user.id.truncate(8, omission: '')
+        %td
+          = user.email
+        %td
+          = l user.created_at, format: :short
+        %td
+          = user.invited_by_type
+        %td
+          = user.invited_by_id&.truncate(8, omission: '')
+        %td
+          = l user.invitation_sent_at, format: :short, default: ''
+        %td
+          = l user.invitation_accepted_at, format: :short, default: ''
+        %td
+          - if user.invited_to_sign_up?
+            = button_to '再招待', admins_user_invitation_path, params: { admins_user: { email: user.email } }
