@@ -20,3 +20,4 @@ config/initializers/filter_parameter_logging.rb
 config/initializers/inflections.rb
 config/initializers/permissions_policy.rb
 config/puma.rb
+lib/tasks/auto_annotate_models.rake
