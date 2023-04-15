@@ -1,22 +1,27 @@
 = link_to 'ユーザーを招待', new_admins_user_invitation_path
 
+= search_form_for [:admins, @q] do |f|
+  = f.label :email_cont
+  = f.search_field :email_cont
+  = f.submit
+
 %table
   %thead
     %tr
       %th{scope: "col"}
-        = User.human_attribute_name(:id)
+        = sort_link(@q, :id)
       %th{scope: "col"}
-        = User.human_attribute_name(:email)
+        = sort_link(@q, :email)
       %th{scope: "col"}
-        = User.human_attribute_name(:created_at)
+        = sort_link(@q, :created_at)
       %th{scope: "col"}
-        = User.human_attribute_name(:invited_by_type)
+        = sort_link(@q, :invited_by_type)
       %th{scope: "col"}
-        = User.human_attribute_name(:invited_by_id)
+        = sort_link(@q, :invited_by_id)
       %th{scope: "col"}
-        = User.human_attribute_name(:invitation_sent_at)
+        = sort_link(@q, :invitation_sent_at)
       %th{scope: "col"}
-        = User.human_attribute_name(:invitation_accepted_at)
+        = sort_link(@q, :invitation_accepted_at)
       %th{scope: "col"}
   %tbody
     - @users.each do |user|

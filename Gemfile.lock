@@ -211,6 +211,10 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    ransack (4.0.0)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rbs (3.0.4)
     redis (4.8.1)
     regexp_parser (2.7.0)
@@ -310,6 +314,7 @@ DEPENDENCIES
   propshaft
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
+  ransack
   redis (~> 4.0)
   rubocop
   rubocop-performance
