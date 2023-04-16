@@ -55,6 +55,14 @@ class User < ApplicationRecord
          :validatable
 
   def self.ransackable_attributes(_auth_object)
-    %w[email]
+    %w[
+      created_at
+      email
+      id
+      invitation_accepted_at
+      invitation_sent_at
+      invited_by_id
+      invited_by_type
+    ]
   end
 end

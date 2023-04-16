@@ -43,3 +43,6 @@
         %td
           - if user.invited_to_sign_up?
             = button_to '再招待', admins_user_invitation_path, params: { admins_user: { email: user.email } }
+
+= paginate @users
+= page_entries_info @users

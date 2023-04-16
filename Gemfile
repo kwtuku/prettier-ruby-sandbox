@@ -48,6 +48,7 @@ gem "bootsnap", require: false
 gem "devise"
 gem "devise_invitable"
 gem "haml-rails"
+gem "kaminari"
 gem "ransack"
 
 group :development, :test do
