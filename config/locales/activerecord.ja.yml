@@ -14,7 +14,7 @@ ja:
         visibility: 公開設定
         created_at: 作成日時
         updated_at: 更新日時
-        user_id:
+        user_id: ユーザー
       questionnaire/levels:
         poor: 不満
         fair: やや不満
@@ -25,3 +25,5 @@ ja:
         draft: 下書き
         restricted: 制限付き
         published: 公開
+    models:
+      questionnaire: アンケート

@@ -1,5 +1,7 @@
-%h1 New questionnaire
+%h1
+  = "#{Questionnaire.model_name.human}"
+  を追加
 
 = render 'form', questionnaire: @questionnaire
 
-= link_to 'Back', users_questionnaires_path
+= link_to '戻る', users_questionnaires_path

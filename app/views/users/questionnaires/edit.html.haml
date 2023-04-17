@@ -1,7 +1,9 @@
-%h1 Editing questionnaire
+%h1
+  = "#{Questionnaire.model_name.human}"
+  を編集
 
 = render 'form', questionnaire: @questionnaire
 
-= link_to 'Show', users_questionnaire_path(@questionnaire)
+= link_to '詳細', users_questionnaire_path(@questionnaire)
 |
-= link_to 'Back', users_questionnaires_path
+= link_to '戻る', users_questionnaires_path

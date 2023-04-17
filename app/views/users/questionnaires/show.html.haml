@@ -1,36 +1,36 @@
 %p= notice
 
 %p
-  %b User:
+  %b #{Questionnaire.human_attribute_name(:user_id)}:
   = @questionnaire.user_id
 %p
-  %b Title:
+  %b #{Questionnaire.human_attribute_name(:title)}:
   = @questionnaire.title
 %p
-  %b Description:
+  %b #{Questionnaire.human_attribute_name(:description)}:
   = @questionnaire.description
 %p
-  %b Level:
-  = @questionnaire.level
+  %b #{Questionnaire.human_attribute_name(:level)}:
+  = Questionnaire.human_attribute_name("levels.#{@questionnaire.level}")
 %p
-  %b Visibility:
-  = @questionnaire.visibility
+  %b #{Questionnaire.human_attribute_name(:visibility)}:
+  = Questionnaire.human_attribute_name("visibilities.#{@questionnaire.visibility}")
 %p
-  %b Agreed:
-  = @questionnaire.agreed
+  %b #{Questionnaire.human_attribute_name(:agreed)}:
+  = @questionnaire.agreed ? 'はい' : 'いいえ'
 %p
-  %b Comfortable:
-  = @questionnaire.comfortable
+  %b #{Questionnaire.human_attribute_name(:comfortable)}:
+  = @questionnaire.comfortable ? 'はい' : 'いいえ'
 %p
-  %b Expire on:
+  %b #{Questionnaire.human_attribute_name(:expire_on)}:
   = @questionnaire.expire_on
 %p
-  %b Start at:
+  %b #{Questionnaire.human_attribute_name(:start_at)}:
   = @questionnaire.start_at
 %p
-  %b End at:
+  %b #{Questionnaire.human_attribute_name(:end_at)}:
   = @questionnaire.end_at
 
-= link_to 'Edit', edit_users_questionnaire_path(@questionnaire)
+= link_to '編集', edit_users_questionnaire_path(@questionnaire)
 |
-= link_to 'Back', users_questionnaires_path
+= link_to '戻る', users_questionnaires_path
