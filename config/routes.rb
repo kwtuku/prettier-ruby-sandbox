@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   namespace :users do
     root "home#index"
+    resources :questionnaires
     resources :users, only: %i[index]
   end
 

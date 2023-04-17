@@ -1,0 +1,7 @@
+%h1 Editing questionnaire
+
+= render 'form', questionnaire: @questionnaire
+
+= link_to 'Show', users_questionnaire_path(@questionnaire)
+|
+= link_to 'Back', users_questionnaires_path

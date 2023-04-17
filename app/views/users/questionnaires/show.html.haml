@@ -1,0 +1,36 @@
+%p= notice
+
+%p
+  %b User:
+  = @questionnaire.user_id
+%p
+  %b Title:
+  = @questionnaire.title
+%p
+  %b Description:
+  = @questionnaire.description
+%p
+  %b Level:
+  = @questionnaire.level
+%p
+  %b Visibility:
+  = @questionnaire.visibility
+%p
+  %b Agreed:
+  = @questionnaire.agreed
+%p
+  %b Comfortable:
+  = @questionnaire.comfortable
+%p
+  %b Expire on:
+  = @questionnaire.expire_on
+%p
+  %b Start at:
+  = @questionnaire.start_at
+%p
+  %b End at:
+  = @questionnaire.end_at
+
+= link_to 'Edit', edit_users_questionnaire_path(@questionnaire)
+|
+= link_to 'Back', users_questionnaires_path

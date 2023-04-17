@@ -54,6 +54,8 @@ class User < ApplicationRecord
          :trackable,
          :validatable
 
+  has_many :questionnaires, dependent: :destroy
+
   def self.ransackable_attributes(_auth_object)
     %w[
       created_at

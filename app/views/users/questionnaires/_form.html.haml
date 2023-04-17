@@ -1,0 +1,46 @@
+= form_for [:users, questionnaire] do |f|
+  - if questionnaire.errors.any?
+    %div
+      %h2
+        = "#{pluralize(questionnaire.errors.count, "error")} prohibited this questionnaire from being saved:"
+      %ul
+        - questionnaire.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :level
+    - radio_button_options = Questionnaire.levels.keys.map { |key| [key, Questionnaire.human_attribute_name("levels.#{key}")] }
+    = f.collection_radio_buttons :level, radio_button_options, :first, :last
+  .field
+    = f.label :visibility
+    -# - select_options = Questionnaire.visibilities.keys.map { |key| [Questionnaire.human_attribute_name("visibilities.#{key}"), key] }
+    -# = f.select :visibility, select_options, { prompt: true }
+    - select_options = Questionnaire.visibilities.keys.map { |key| [key, Questionnaire.human_attribute_name("visibilities.#{key}")] }
+    = f.collection_select :visibility, select_options, :first, :last, { prompt: true }
+  .field
+    = f.check_box :agreed
+    = f.label :agreed
+  .field
+    = f.label :comfortable
+    - radio_button_options = [[true,'はい'],[false,'いいえ']]
+    -# = f.collection_radio_buttons :comfortable, radio_button_options, :first, :last
+    = f.collection_radio_buttons :comfortable, radio_button_options, :first, :last do |b|
+      = b.radio_button class: 'radio_button_class'
+      = b.label class: 'label_class'
+  .field
+    = f.label :expire_on
+    = f.date_field :expire_on
+  .field
+    = f.label :start_at
+    = f.datetime_field :start_at
+  .field
+    = f.label :end_at
+    = f.datetime_field :end_at
+  .actions
+    = f.submit

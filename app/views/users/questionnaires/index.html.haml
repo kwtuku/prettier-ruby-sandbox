@@ -1,0 +1,42 @@
+%h1 Listing questionnaires
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Title
+      %th Description
+      %th Level
+      %th Visibility
+      %th Agreed
+      %th Comfortable
+      %th Expire on
+      %th Start at
+      %th End at
+      %th
+      %th
+      %th
+
+  %tbody
+    - @questionnaires.each do |questionnaire|
+      %tr
+        %td= questionnaire.user_id
+        %td= questionnaire.title
+        %td= questionnaire.description
+        %td
+          = Questionnaire.human_attribute_name("levels.#{questionnaire.level}")
+        %td
+          = Questionnaire.human_attribute_name("visibilities.#{questionnaire.visibility}")
+        %td= questionnaire.agreed
+        %td= questionnaire.comfortable
+        %td= questionnaire.expire_on
+        %td= questionnaire.start_at
+        %td= questionnaire.end_at
+        %td= link_to "Show", users_questionnaire_path(questionnaire)
+        %td= link_to "Edit", edit_users_questionnaire_path(questionnaire)
+        %td
+          = link_to "Destroy", users_questionnaire_path(questionnaire), method: :delete, data: { confirm: "Are you sure?" }
+
+%br/
+
+= link_to 'New Questionnaire', new_users_questionnaire_path
