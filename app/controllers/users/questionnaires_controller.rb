@@ -59,6 +59,7 @@ module Users
         :expire_on,
         :start_at,
         :end_at,
+        label_ids: [],
       )
     end
   end

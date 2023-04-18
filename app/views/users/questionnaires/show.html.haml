@@ -30,6 +30,9 @@
 %p
   %b #{Questionnaire.human_attribute_name(:end_at)}:
   = @questionnaire.end_at
+%p
+  %b #{Questionnaire.human_attribute_name(:label_ids)}:
+  = @questionnaire.labels.pluck(:name).join(', ')
 
 = link_to '編集', edit_users_questionnaire_path(@questionnaire)
 |

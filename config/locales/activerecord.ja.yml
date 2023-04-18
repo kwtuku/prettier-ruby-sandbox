@@ -15,6 +15,7 @@ ja:
         created_at: 作成日時
         updated_at: 更新日時
         user_id: ユーザー
+        label_ids: ラベル
       questionnaire/levels:
         poor: 不満
         fair: やや不満

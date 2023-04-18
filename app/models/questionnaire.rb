@@ -35,6 +35,9 @@ class Questionnaire < ApplicationRecord
 
   belongs_to :user
 
+  has_many :labelings, dependent: :destroy
+  has_many :labels, through: :labelings
+
   validates :title, length: { in: 1..50 }
   validates :description, length: { in: 0..500 }
   validates :level, inclusion: Questionnaire.levels.keys
