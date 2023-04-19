@@ -1,16 +1,20 @@
 ja:
   activerecord:
     attributes:
+      default: &default
+        start_at: 開始日時
+        end_at: 終了日時
+      shared:
+        title: タイトル
       questionnaire:
+        <<: *default
         id:
         agreed: 同意
         comfortable: 気軽
         description: 説明
-        end_at: 終了日時
         expire_on: 期限日
         level: レベル
-        start_at: 開始日時
-        title: タイトル
+        title: :activerecord.attributes.shared.title
         visibility: 公開設定
         created_at: 作成日時
         updated_at: 更新日時
