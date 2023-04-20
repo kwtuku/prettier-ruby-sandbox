@@ -3,6 +3,7 @@
 # Table name: labelings
 #
 #  id               :uuid             not null, primary key
+#  color            :integer          default("inherit"), not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  label_id         :uuid             not null
@@ -19,8 +20,19 @@
 #  fk_rails_...  (questionnaire_id => questionnaires.id)
 #
 class Labeling < ApplicationRecord
+  enum :color,
+       inherit: 0,
+       red: 1,
+       orange: 2,
+       yellow: 3,
+       green: 4,
+       blue: 5,
+       purple: 6,
+       pink: 7
+
   belongs_to :questionnaire
   belongs_to :label
 
   validates :questionnaire_id, uniqueness: { scope: :label_id }
+  validates :color, inclusion: Labeling.colors.keys
 end

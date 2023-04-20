@@ -38,8 +38,16 @@ class Questionnaire < ApplicationRecord
   has_many :labelings, dependent: :destroy
   has_many :labels, through: :labelings
 
+  accepts_nested_attributes_for :labelings,
+                                allow_destroy: true,
+                                reject_if: :label_id_blank
+
   validates :title, length: { in: 1..50 }
   validates :description, length: { in: 0..500 }
   validates :level, inclusion: Questionnaire.levels.keys
   validates :visibility, inclusion: Questionnaire.visibilities.keys
+
+  def label_id_blank(labeling_attributes)
+    labeling_attributes["label_id"].blank?
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_17_114708) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_19_124442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_114708) do
     t.uuid "label_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "color", default: 0, null: false
     t.index ["label_id"], name: "index_labelings_on_label_id"
     t.index ["questionnaire_id", "label_id"], name: "index_labelings_on_questionnaire_id_and_label_id", unique: true
   end

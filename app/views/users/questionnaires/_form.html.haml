@@ -42,10 +42,20 @@
     = f.label :end_at
     = f.datetime_field :end_at
   .field
-    = f.label :label_ids
-    - label_ids_options = Label.order(:created_at).pluck(:id, :name)
-    = f.collection_check_boxes :label_ids, label_ids_options, :first, :last do |b|
-      = b.check_box class: 'check_box_class'
-      = b.label class: 'label_class'
+    - label_id_options = Label.order(:created_at).pluck(:id, :name)
+    - color_options = Labeling.colors.keys.map { |key| [key, Labeling.human_attribute_name("colors.#{key}")] }
+
+    = f.label :labelings
+    = f.fields_for :labelings do |cf|
+      %div
+        = cf.label :label_id
+        = cf.collection_select :label_id, label_id_options, :first, :last, { prompt: true }
+
+        = cf.label :color
+        = cf.collection_select :color, color_options, :first, :last, { prompt: true }
+
+        - if cf.object.persisted?
+          = cf.label :_destroy
+          = cf.check_box :_destroy
   .actions
     = f.submit
