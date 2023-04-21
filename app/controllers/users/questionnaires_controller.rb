@@ -11,11 +11,9 @@ module Users
 
     def new
       @questionnaire = current_user.questionnaires.new
-      @questionnaire.labelings.new
     end
 
     def edit
-      @questionnaire.labelings.new
     end
 
     def create
@@ -25,7 +23,6 @@ module Users
         redirect_to users_questionnaire_path(@questionnaire),
                     notice: "Questionnaire was successfully created."
       else
-        @questionnaire.labelings.new
         render :new, status: :unprocessable_entity
       end
     end
@@ -35,7 +32,6 @@ module Users
         redirect_to users_questionnaire_path(@questionnaire),
                     notice: "Questionnaire was successfully updated."
       else
-        @questionnaire.labelings.new
         render :edit, status: :unprocessable_entity
       end
     end

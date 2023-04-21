@@ -41,9 +41,11 @@
   .field
     = f.label :end_at
     = f.datetime_field :end_at
-  .field
-    - label_id_options = Label.order(:created_at).pluck(:id, :name)
-    - color_options = Labeling.colors.keys.map { |key| [key, Labeling.human_attribute_name("colors.#{key}")] }
+  .field{data: { controller: "fields-for" }}
+    :ruby
+      @questionnaire.labelings.new
+      label_id_options = Label.order(:created_at).pluck(:id, :name)
+      color_options = Labeling.colors.keys.map { |key| [key, Labeling.human_attribute_name("colors.#{key}")] }
 
     = f.label :labelings
     = f.fields_for :labelings do |cf|
@@ -57,5 +59,16 @@
         - if cf.object.persisted?
           = cf.label :_destroy
           = cf.check_box :_destroy
+
+      - if cf.index == (f.object.labelings.length - 1)
+        %template{data: { fields_for_target: "template" }}
+          %div
+            = cf.label :label_id
+            = cf.collection_select :label_id, label_id_options, :first, :last, { prompt: true }
+
+            = cf.label :color
+            = cf.collection_select :color, color_options, :first, :last, { prompt: true }
+
+    %button{type: "button", data: { action: "fields-for#add" }} 入力欄を追加
   .actions
     = f.submit

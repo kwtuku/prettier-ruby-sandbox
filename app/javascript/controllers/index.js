@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import FieldsForController from "./fields_for_controller"
+application.register("fields-for", FieldsForController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
