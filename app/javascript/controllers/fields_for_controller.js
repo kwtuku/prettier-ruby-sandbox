@@ -1,14 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["foo", "template"]
+  static targets = ["template"]
 
   add() {
-    const newInput = this.templateTarget.content.cloneNode(true)
+    const childForm = this.templateTarget.content.cloneNode(true)
     const uniqueKey = Date.now()
 
-    const labels = newInput.querySelectorAll("label")
-    const selects = newInput.querySelectorAll("select")
+    const labels = childForm.querySelectorAll("label")
+    const selects = childForm.querySelectorAll("select")
 
     labels.forEach((label) => {
       label.htmlFor = label.htmlFor.replace(/_\d+_/, `_${uniqueKey}_`)
@@ -19,6 +19,6 @@ export default class extends Controller {
       select.name = select.name.replace(/\[\d+\]/, `[${uniqueKey}]`)
     })
 
-    this.element.insertBefore(newInput, this.templateTarget)
+    this.element.insertBefore(childForm, this.templateTarget)
   }
 }
