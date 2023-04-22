@@ -50,6 +50,7 @@ gem "devise_invitable"
 gem "haml-rails"
 gem "kaminari"
 gem "ransack"
+gem "simple_form"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -262,6 +262,9 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     sexp_processor (4.16.1)
+    simple_form (5.2.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     syntax_tree (6.1.1)
@@ -333,6 +336,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   selenium-webdriver
+  simple_form
   stimulus-rails
   syntax_tree
   syntax_tree-haml
