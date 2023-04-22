@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
   root "home#index"
 
-  devise_for :users, controllers: { invitations: "users/invitations" }
+  devise_for :users,
+             skip: %i[registrations],
+             controllers: {
+               invitations: "users/invitations",
+             }
+  devise_scope :user do
+    resource :user_registration,
+             controller: "devise_invitable/registrations",
+             only: %i[edit update destroy],
+             path: "users"
+  end
   namespace :users do
     root "home#index"
+    resources :questionnaires
     resources :users, only: %i[index]
   end
 

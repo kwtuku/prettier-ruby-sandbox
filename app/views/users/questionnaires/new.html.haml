@@ -1,0 +1,7 @@
+%h1
+  = "#{Questionnaire.model_name.human}"
+  を追加
+
+= render 'form', questionnaire: @questionnaire
+
+= link_to '戻る', users_questionnaires_path

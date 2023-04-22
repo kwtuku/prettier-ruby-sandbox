@@ -13,5 +13,6 @@
     %p= alert
     = link_to 'ホーム', users_root_path
     = link_to 'ユーザー一覧', users_users_path
+    = link_to "#{Questionnaire.model_name.human}一覧", users_questionnaires_path
     = button_to 'ログアウト', destroy_user_session_path, method: :delete
     = yield

@@ -1,0 +1,44 @@
+%h1= Questionnaire.model_name.human
+
+%table
+  %thead
+    %tr
+      %th= Questionnaire.human_attribute_name(:user_id)
+      %th= Questionnaire.human_attribute_name(:title)
+      %th= Questionnaire.human_attribute_name(:description)
+      %th= Questionnaire.human_attribute_name(:level)
+      %th= Questionnaire.human_attribute_name(:visibility)
+      %th= Questionnaire.human_attribute_name(:agreed)
+      %th= Questionnaire.human_attribute_name(:comfortable)
+      %th= Questionnaire.human_attribute_name(:expire_on)
+      %th= Questionnaire.human_attribute_name(:start_at)
+      %th= Questionnaire.human_attribute_name(:end_at)
+      %th= Questionnaire.human_attribute_name(:label_ids)
+      %th
+      %th
+      %th
+
+  %tbody
+    - @questionnaires.preload(:labels).each do |questionnaire|
+      %tr
+        %td= questionnaire.user_id
+        %td= questionnaire.title
+        %td= questionnaire.description
+        %td
+          = Questionnaire.human_attribute_name("levels.#{questionnaire.level}")
+        %td
+          = Questionnaire.human_attribute_name("visibilities.#{questionnaire.visibility}")
+        %td= questionnaire.agreed ? "はい" : "いいえ"
+        %td= questionnaire.comfortable ? "はい" : "いいえ"
+        %td= questionnaire.expire_on
+        %td= questionnaire.start_at
+        %td= questionnaire.end_at
+        %td
+          - questionnaire.labels.each do |label|
+            %div= label.name
+        %td= link_to "詳細", users_questionnaire_path(questionnaire)
+        %td= link_to "編集", edit_users_questionnaire_path(questionnaire)
+        %td
+          = button_to "削除", users_questionnaire_path(questionnaire), method: :delete, data: { turbo_confirm: "本当によろしいですか？" }
+
+= link_to "#{Questionnaire.model_name.human}を追加", new_users_questionnaire_path

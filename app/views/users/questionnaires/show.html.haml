@@ -1,0 +1,39 @@
+%p= notice
+
+%p
+  %b #{Questionnaire.human_attribute_name(:user_id)}:
+  = @questionnaire.user_id
+%p
+  %b #{Questionnaire.human_attribute_name(:title)}:
+  = @questionnaire.title
+%p
+  %b #{Questionnaire.human_attribute_name(:description)}:
+  = @questionnaire.description
+%p
+  %b #{Questionnaire.human_attribute_name(:level)}:
+  = Questionnaire.human_attribute_name("levels.#{@questionnaire.level}")
+%p
+  %b #{Questionnaire.human_attribute_name(:visibility)}:
+  = Questionnaire.human_attribute_name("visibilities.#{@questionnaire.visibility}")
+%p
+  %b #{Questionnaire.human_attribute_name(:agreed)}:
+  = @questionnaire.agreed ? 'はい' : 'いいえ'
+%p
+  %b #{Questionnaire.human_attribute_name(:comfortable)}:
+  = @questionnaire.comfortable ? 'はい' : 'いいえ'
+%p
+  %b #{Questionnaire.human_attribute_name(:expire_on)}:
+  = @questionnaire.expire_on
+%p
+  %b #{Questionnaire.human_attribute_name(:start_at)}:
+  = @questionnaire.start_at
+%p
+  %b #{Questionnaire.human_attribute_name(:end_at)}:
+  = @questionnaire.end_at
+%p
+  %b #{Questionnaire.human_attribute_name(:label_ids)}:
+  = @questionnaire.labels.pluck(:name).join(', ')
+
+= link_to '編集', edit_users_questionnaire_path(@questionnaire)
+|
+= link_to '戻る', users_questionnaires_path

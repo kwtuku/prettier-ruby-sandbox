@@ -48,6 +48,8 @@ gem "bootsnap", require: false
 gem "devise"
 gem "devise_invitable"
 gem "haml-rails"
+gem "kaminari"
+gem "ransack"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -64,6 +66,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
+  gem "annotate", require: false
   gem "haml_lint", require: false
   gem "html2haml", require: false
   gem "letter_opener_web"
