@@ -1,74 +1,38 @@
-= form_for [:users, questionnaire] do |f|
+:ruby
+  level_options = Questionnaire.levels.keys.map { |key| [Questionnaire.human_attribute_name("levels.#{key}"), key] }
+  visibility_options = Questionnaire.visibilities.keys.map { |key| [Questionnaire.human_attribute_name("visibilities.#{key}"), key] }
+  @questionnaire.labelings.new
+  label_id_options = Label.order(:created_at).pluck(:name, :id)
+  color_options = Labeling.colors.keys.map { |key| [Labeling.human_attribute_name("colors.#{key}"), key] }
+
+= simple_form_for [:users, questionnaire] do |f|
   - if questionnaire.errors.any?
     %div
       %h2
-        = "#{pluralize(questionnaire.errors.count, "error")} prohibited this questionnaire from being saved:"
+        = f.error_notification
       %ul
         - questionnaire.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :level
-    - level_options = Questionnaire.levels.keys.map { |key| [key, Questionnaire.human_attribute_name("levels.#{key}")] }
-    = f.collection_radio_buttons :level, level_options, :first, :last do |b|
-      = b.radio_button class: 'radio_button_class'
-      = b.label class: 'label_class'
-  .field
-    = f.label :visibility
-    - visibility_options = Questionnaire.visibilities.keys.map { |key| [key, Questionnaire.human_attribute_name("visibilities.#{key}")] }
-    = f.collection_select :visibility, visibility_options, :first, :last, { prompt: true }
-  .field
-    = f.check_box :agreed
-    = f.label :agreed
-  .field
-    = f.label :comfortable
-    - comfortable_options = [[true,'はい'],[false,'いいえ']]
-    = f.collection_radio_buttons :comfortable, comfortable_options, :first, :last do |b|
-      = b.radio_button class: 'radio_button_class'
-      = b.label class: 'label_class'
-  .field
-    = f.label :expire_on
-    = f.date_field :expire_on
-  .field
-    = f.label :start_at
-    = f.datetime_field :start_at
-  .field
-    = f.label :end_at
-    = f.datetime_field :end_at
+          %li= f.error_notification message: message
+  = f.input :title
+  = f.input :description
+  = f.input :level, collection: level_options, as: :radio_buttons
+  = f.input :visibility, collection: visibility_options, include_blank: false, prompt: true
+  = f.input :agreed
+  = f.input :comfortable, as: :radio_buttons
+  = f.input :expire_on, html5: true
+  = f.input :start_at, html5: true
+  = f.input :end_at, html5: true
   .field{data: { controller: "fields-for" }}
-    :ruby
-      @questionnaire.labelings.new
-      label_id_options = Label.order(:created_at).pluck(:id, :name)
-      color_options = Labeling.colors.keys.map { |key| [key, Labeling.human_attribute_name("colors.#{key}")] }
-
     = f.label :labelings
-    = f.fields_for :labelings do |cf|
+    = f.simple_fields_for :labelings do |cf|
       %div
-        = cf.label :label_id
-        = cf.collection_select :label_id, label_id_options, :first, :last, { prompt: true }
-
-        = cf.label :color
-        = cf.collection_select :color, color_options, :first, :last, { prompt: true }
-
-        - if cf.object.persisted?
-          = cf.label :_destroy
-          = cf.check_box :_destroy
-
-      - if cf.index == (f.object.labelings.length - 1)
-        %template{data: { fields_for_target: "template" }}
-          %div
-            = cf.label :label_id
-            = cf.collection_select :label_id, label_id_options, :first, :last, { prompt: true }
-
-            = cf.label :color
-            = cf.collection_select :color, color_options, :first, :last, { prompt: true }
-
+        = cf.input :label_id, collection: label_id_options, include_blank: false, prompt: true, wrapper: false
+        = cf.input :color, collection: color_options, include_blank: false, wrapper: false
+        = cf.input :_destroy, as: :boolean, wrapper: false if cf.object.persisted?
+        - if cf.index == (f.object.labelings.length - 1)
+          %template{data: { fields_for_target: "template" }}
+            %div
+              = cf.input :label_id, collection: label_id_options, include_blank: false, prompt: true, wrapper: false
+              = cf.input :color, collection: color_options, include_blank: false, wrapper: false
     %button{type: "button", data: { action: "fields-for#add" }} 入力欄を追加
-  .actions
-    = f.submit
+  = f.submit
