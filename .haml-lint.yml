@@ -1,6 +1,6 @@
 linters:
   LineLength:
-    max: 120
+    enabled: false
 
   SpaceInsideHashAttributes:
     style: no_space
