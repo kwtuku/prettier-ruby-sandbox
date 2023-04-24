@@ -1,0 +1,26 @@
+= simple_form_for [:users, @questionnaire] do |f|
+  - if @questionnaire.errors.any?
+    %div
+      %h2
+        = f.error_notification
+      %ul
+        - @questionnaire.errors.full_messages.each do |message|
+          %li= f.error_notification message: message
+  = f.input :title
+  = f.input :description
+  = f.input :level, collection: @level_options, as: :radio_buttons
+  = f.input :visibility, collection: @visibility_options, include_blank: false, prompt: true
+  = f.input :agreed
+  = f.input :comfortable, as: :radio_buttons
+  = f.input :expire_on, html5: true
+  = f.input :start_at, html5: true
+  = f.input :end_at, html5: true
+  .field{data: { controller: "fields-for" }}
+    = f.label :labelings
+    = f.simple_fields_for :labelings do |cf|
+      = render QuestionnaireLabelingFormComponent.new(cf:)
+      - if cf.index == (f.object.labelings.length - 1)
+        %template{data: { fields_for_target: "template" }}
+          = render QuestionnaireLabelingFormComponent.new(cf:)
+    %button{type: "button", data: { action: "fields-for#add" }} 入力欄を追加
+  = f.submit

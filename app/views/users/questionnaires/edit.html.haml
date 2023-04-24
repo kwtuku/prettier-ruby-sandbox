@@ -2,7 +2,7 @@
   = "#{Questionnaire.model_name.human}"
   を編集
 
-= render 'form', questionnaire: @questionnaire
+= render QuestionnaireFormComponent.new(questionnaire: @questionnaire)
 
 = link_to '詳細', users_questionnaire_path(@questionnaire)
 |
