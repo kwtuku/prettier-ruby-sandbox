@@ -1,4 +1,0 @@
-%div
-  = cf.input :label_id, collection: label_id_options, include_blank: false, prompt: true, wrapper: false
-  = cf.input :color, collection: color_options, include_blank: false, wrapper: false
-  = cf.input :_destroy, as: :boolean, wrapper: false if cf.object.persisted?
