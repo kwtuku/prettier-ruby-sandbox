@@ -4,3 +4,6 @@ linters:
 
   SpaceInsideHashAttributes:
     style: no_space
+
+  UnnecessaryStringOutput:
+    enabled: false
