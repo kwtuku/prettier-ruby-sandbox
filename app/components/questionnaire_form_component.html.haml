@@ -5,7 +5,9 @@
         = f.error_notification
       %ul
         - @questionnaire.errors.full_messages.each do |message|
+          -# rubocop:disable Style/HashSyntax
           %li= f.error_notification message: message
+          -# rubocop:enable Style/HashSyntax
   = f.input :title
   = f.input :description
   = f.input :level, collection: @level_options, as: :radio_buttons
