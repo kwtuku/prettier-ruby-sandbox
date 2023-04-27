@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form-label {
+  @apply mb-2 block text-sm font-medium text-gray-900;
+}
+
+.form-control {
+  @apply block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500;
+}
+
+.form-select {
+  @apply block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500;
+}
+
+.form-check-input {
+  @apply h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500;
+}
+
+.form-check-label {
+  @apply ml-2 text-sm font-medium text-gray-900;
+}
+
+.form-check {
+  @apply flex items-center;
+}

@@ -8,11 +8,11 @@
           -# rubocop:disable Style/HashSyntax
           %li= f.error_notification message: message
           -# rubocop:enable Style/HashSyntax
-  = f.input :title
-  = f.input :description
+  = f.input :title, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, input_html: { class: "form-control" }
+  = f.input :description, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, input_html: { class: "form-control" }
   = f.input :level, collection: @level_options, as: :radio_buttons
-  = f.input :visibility, collection: @visibility_options, include_blank: false, prompt: true
-  = f.input :agreed
+  = f.input :visibility, collection: @visibility_options, include_blank: false, prompt: true, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, input_html: { class: "form-select" }
+  = f.input :agreed, boolean_style: :inline, wrapper_html: { class: 'form-check' }, label_html: { class: "form-check-label" }, input_html: { class: "form-check-input" }
   = f.input :comfortable, as: :radio_buttons
   = f.input :expire_on, html5: true
   = f.input :start_at, html5: true
