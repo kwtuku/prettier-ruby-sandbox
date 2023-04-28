@@ -1,4 +1,4 @@
 %div
   = @cf.input :label_id, collection: @label_id_options, include_blank: false, prompt: true, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, input_html: { class: "form-select" }
   = @cf.input :color, collection: @color_options, include_blank: false, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, input_html: { class: "form-select" }
-  = @cf.input :_destroy, as: :boolean, boolean_style: :inline, wrapper_html: { class: 'form-check' }, label_html: { class: "form-check-label" }, input_html: { class: "form-check-input" } if @cf.object.persisted?
+  = @cf.input :_destroy, as: :boolean, boolean_style: :inline, wrapper_html: { class: 'form-check mb-6' }, label_html: { class: "form-check-label" }, input_html: { class: "form-check-input" } if @cf.object.persisted?
