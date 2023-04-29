@@ -1,7 +1,9 @@
 %h1
+  -# rubocop:disable Style/RedundantInterpolation
   = "#{Questionnaire.model_name.human}"
   を追加
+  -# rubocop:enable Style/RedundantInterpolation
 
-= render 'form', questionnaire: @questionnaire
+= render QuestionnaireFormComponent.new(questionnaire: @questionnaire)
 
 = link_to '戻る', users_questionnaires_path

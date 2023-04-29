@@ -1,0 +1,33 @@
+= simple_form_for [:users, @questionnaire] do |f|
+  - if @questionnaire.errors.any?
+    %div
+      %h2
+        = f.error_notification
+      %ul
+        - @questionnaire.errors.full_messages.each do |message|
+          -# rubocop:disable Style/HashSyntax
+          %li= f.error_notification message: message
+          -# rubocop:enable Style/HashSyntax
+  = f.input :title, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, input_html: { class: "form-control" }
+  = f.input :description, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, input_html: { class: "form-control" }
+  = f.input :level, collection: @level_options, as: :radio_buttons, boolean_style: :inline, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, collection_wrapper_class: 'flex', item_wrapper_class: "flex items-center mr-4", item_label_class: "form-radio-label", input_html: { class: "form-radio-input" }
+  = f.input :visibility, collection: @visibility_options, include_blank: false, prompt: true, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, input_html: { class: "form-select" }
+  = f.input :agreed, boolean_style: :inline, wrapper_html: { class: 'form-check mb-6' }, label_html: { class: "form-check-label" }, input_html: { class: "form-check-input" }
+  = f.input :comfortable, as: :radio_buttons, boolean_style: :inline, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, collection_wrapper_class: 'flex', item_wrapper_class: "flex items-center mr-4", item_label_class: "form-radio-label", input_html: { class: "form-radio-input" }
+  = f.input :expire_on, html5: true, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, input_html: { class: "form-control" }
+  = f.input :start_at, html5: true, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, input_html: { class: "form-control" }
+  = f.input :end_at, html5: true, wrapper_html: { class: 'mb-6' }, label_html: { class: "form-label" }, input_html: { class: "form-control" }
+  .field{data: { controller: "fields-for" }}
+    = f.label :labelings, class: "form-label"
+    = f.simple_fields_for :labelings do |cf|
+      = render QuestionnaireLabelingFormComponent.new(cf:)
+      - if cf.index == (f.object.labelings.length - 1)
+        %template{data: { fields_for_target: "template" }}
+          = render QuestionnaireLabelingFormComponent.new(cf:)
+    %button.mb-6{
+      type: "button",
+      data: { action: "fields-for#add" },
+      class: "text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+    }
+      入力欄を追加
+  = f.submit class: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center'

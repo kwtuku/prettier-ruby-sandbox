@@ -28,6 +28,10 @@ AllCops:
     - config/puma.rb
     - lib/tasks/auto_annotate_models.rake
 
+Lint/MissingSuper:
+  Exclude:
+    - app/components/*
+
 Metrics/AbcSize:
   Exclude:
     - db/migrate/20230406141125_devise_create_users.rb
@@ -37,6 +41,10 @@ Metrics/MethodLength:
     - db/migrate/20230406141125_devise_create_users.rb
     - db/migrate/20230408121228_devise_invitable_add_to_users.rb
     - db/migrate/20230409121350_devise_create_admins.rb
+
+Naming/MethodParameterName:
+  Enabled: true
+  MinNameLength: 2
 
 Style/Documentation:
   Enabled: false
