@@ -9,62 +9,12 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
   %body.bg-white
-    -# %p= notice
-    -# %p= alert
-    -# = link_to 'ホーム', users_root_path
-    -# = link_to 'ユーザー一覧', users_users_path
-    -# = link_to "#{Questionnaire.model_name.human}一覧", users_questionnaires_path
-    -# = button_to 'ログアウト', destroy_user_session_path, method: :delete
-    -# = yield
     = render "layouts/users/navbar"
     = render "layouts/users/sidebar"
-    :erb
-      <div class="p-4 sm:ml-64">
-        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg mt-14">
-          <div class="grid grid-cols-3 gap-4 mb-4">
-            <div class="flex items-center justify-center h-24 rounded bg-gray-50">
-              <p class="text-2xl text-gray-400">+</p>
-            </div>
-            <div class="flex items-center justify-center h-24 rounded bg-gray-50">
-              <p class="text-2xl text-gray-400">+</p>
-            </div>
-            <div class="flex items-center justify-center h-24 rounded bg-gray-50">
-              <p class="text-2xl text-gray-400">+</p>
-            </div>
-          </div>
-          <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50">
-            <p class="text-2xl text-gray-400">+</p>
-          </div>
-          <div class="grid grid-cols-2 gap-4 mb-4">
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28">
-              <p class="text-2xl text-gray-400">+</p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28">
-              <p class="text-2xl text-gray-400">+</p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28">
-              <p class="text-2xl text-gray-400">+</p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28">
-              <p class="text-2xl text-gray-400">+</p>
-            </div>
-          </div>
-          <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50">
-            <p class="text-2xl text-gray-400">+</p>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28">
-              <p class="text-2xl text-gray-400">+</p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28">
-              <p class="text-2xl text-gray-400">+</p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28">
-              <p class="text-2xl text-gray-400">+</p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28">
-              <p class="text-2xl text-gray-400">+</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    %div{class: "p-4 sm:ml-64"}
+      %div{class: "p-4 border-2 border-gray-200 border-dashed rounded-lg mt-14"}
+        - if notice
+          %p= notice
+        - if alert
+          %p= alert
+        = yield
