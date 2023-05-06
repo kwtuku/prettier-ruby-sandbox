@@ -46,6 +46,12 @@ class Questionnaire < ApplicationRecord
   validates :description, length: { in: 0..500 }
   validates :level, inclusion: Questionnaire.levels.keys
   validates :visibility, inclusion: Questionnaire.visibilities.keys
+  validates :start_at,
+            comparison: {
+              less_than_or_equal_to: :end_at,
+            },
+            allow_nil: true,
+            if: :end_at
 
   def label_id_blank(labeling_attributes)
     labeling_attributes["label_id"].blank?

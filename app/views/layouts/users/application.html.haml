@@ -8,11 +8,13 @@
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
-  %body
-    %p= notice
-    %p= alert
-    = link_to 'ホーム', users_root_path
-    = link_to 'ユーザー一覧', users_users_path
-    = link_to "#{Questionnaire.model_name.human}一覧", users_questionnaires_path
-    = button_to 'ログアウト', destroy_user_session_path, method: :delete
-    = yield
+  %body.bg-white
+    = render "layouts/users/navbar"
+    = render "layouts/users/sidebar"
+    %div{class: "p-4 sm:ml-64"}
+      %div{class: "p-4 border-2 border-gray-200 border-dashed rounded-lg mt-14"}
+        - if notice
+          %p= notice
+        - if alert
+          %p= alert
+        = yield
